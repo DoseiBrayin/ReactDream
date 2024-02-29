@@ -1,13 +1,18 @@
-//import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  //const [data, setData] = useState([]) 
+  const [data, setData] = useState([]) 
+
   const fetchData = async () => {
     const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
     const data = await response.json()
     return data
   }
+
+  useEffect(() => {
+    fetchData().then(setData);
+  }, []);
 
   return (
     <div className='container-md'>
@@ -22,7 +27,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {fetchData.map((item) => {
+          {data.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
               <td>{item.order}</td>
@@ -30,8 +35,7 @@ function App() {
               <td>{item.url}</td>
               <td>{item.completed}</td>
             </tr>
-          })
-          }
+          ))}
         </tbody>
       </table>
     </div>
