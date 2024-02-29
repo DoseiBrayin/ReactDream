@@ -6,10 +6,8 @@ function App() {
   const fetchData = async () => {
     const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
     const data = await response.json()
-    console.log(data)
+    return data
   }
-
-  fetchData()
 
   return (
     <div className='container-md'>
@@ -24,7 +22,16 @@ function App() {
           </tr>
         </thead>
         <tbody>
-
+          {fetchData.map((item) => {
+            <tr key={item.id}>
+              <td>{item.id}</td>
+              <td>{item.order}</td>
+              <td>{item.title}</td>
+              <td>{item.url}</td>
+              <td>{item.completed}</td>
+            </tr>
+          })
+          }
         </tbody>
       </table>
     </div>
