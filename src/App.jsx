@@ -34,7 +34,7 @@ function App() {
               <td>{item.order}</td>
               <td>{item.title}</td>
               <td>{item.url}</td>
-              <td>{item.completed}</td>
+              <td>{item.completed ? 'Completed' : 'Not completed'}</td>
             </tr>
           ))}
         </tbody>
