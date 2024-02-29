@@ -1,12 +1,10 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [data, setData] = useState([]) 
+  //const [data, setData] = useState([]) 
   const fetchData = async () => {
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-    const targetUrl = 'https://crudpython.azurewebsites.net/api/Read?'
-    const response = await fetch(proxyUrl + targetUrl)
+    const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
     const data = await response.json()
     console.log(data)
   }
