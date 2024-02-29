@@ -2,6 +2,14 @@
 import './App.css'
 
 function App() {
+  //const [data, setData] = useState([]) 
+  const fetchData = async () => {
+    const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
+    const data = await response.json()
+    console.log(data)
+  }
+
+  fetchData()
 
   return (
     <div className='container-md'>
