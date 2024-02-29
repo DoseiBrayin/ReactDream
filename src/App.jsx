@@ -2,30 +2,24 @@
 import './App.css'
 
 function App() {
-  //const [data, setData] = useState([]) 
-  const fetchData = async () => {
-    const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
-    const data = await response.json()
-    console.log(data)
-  }
-  fetchData()
+
   return (
-    <>
-      <table>
+    <div className='container-md'>
+    <table className='table table-dark'>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Order</th>
-            <th>Title</th>
-            <th>URL</th>
-            <th>Completed</th>
+            <th className='col'>ID</th>
+            <th className='col'>Order</th>
+            <th className='col'>Title</th>
+            <th className='col'>URL</th>
+            <th className='col'>Completed</th>
           </tr>
         </thead>
         <tbody>
 
         </tbody>
       </table>
-    </>
+    </div>
   )
 }
 
