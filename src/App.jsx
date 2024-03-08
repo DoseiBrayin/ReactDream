@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ShowToDO from './components/ShowToDo/ShowToDo.jsx'
+import NavBar from './components/NavBar/NavBar.jsx'
 
 function App() {
-  const [data, setData] = useState([]) 
+  /*const [data, setData] = useState([]) 
 
   const fetchData = async () => {
     const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
@@ -13,32 +16,16 @@ function App() {
 
   useEffect(() => {
     fetchData().then(setData);
-  }, []);
+  }, []);*/
 
   return (
-    <div className='container-md'>
-    <table className='table table-dark'>
-        <thead>
-          <tr>
-            <th className='col'>ID</th>
-            <th className='col'>Order</th>
-            <th className='col'>Title</th>
-            <th className='col'>URL</th>
-            <th className='col'>Completed</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.Id}>
-              <td>{item.Id}</td>
-              <td>{item.order}</td>
-              <td>{item.title}</td>
-              <td>{item.url}</td>
-              <td>{item.completed ? 'Completed' : 'Not completed'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className='container'>
+      <NavBar />
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<ShowToDO />} />
+          </Routes>
+        </BrowserRouter>
     </div>
   )
 }
