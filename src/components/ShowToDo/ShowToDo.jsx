@@ -1,21 +1,15 @@
 import './ShowToDo.css'
+import ToDoItem from '../ToDoItem/ToDoItem'
 
 function ShowToDo() {
     return (
         <div className='show-to-do'>
             <h1>Show To-Do</h1>
             <section className="ToDoItems">
-                <article className='ToDoItem'>
-                    <h2>ToDoItemTitle</h2>
-                    <a>ToDoItemURL</a>
-                    <span>ToDoItemID</span>
-                    <span>ToDoItemOrder</span>
-                    <span>ToDoItemCompleted</span>
-                    <div className="Buttoms">
-                        <button className='Edit'>Edit</button>
-                        <button className='Delete'>Delete</button>
-                    </div>
-                </article>
+                <ToDoItem title='Title' url='Url' id='Id' order='Order' completed={true} />
+                <ToDoItem title='Title' url='Url' id='Id' order='Order' completed={false} />
+                <ToDoItem title='Title' url='Url' id='Id' order='Order' completed={true} />
+                <ToDoItem title='Title' url='Url' id='Id' order='Order' completed={false} />
             </section>
         </div>
     )
