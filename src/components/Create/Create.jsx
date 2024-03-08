@@ -1,11 +1,13 @@
 import './Create.css'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Create() {
     const [title, setTitle] = useState('')
     const [url, setUrl] = useState('')
     const [order, setOrder] = useState('')
     const [completed, setCompleted] = useState(false)
+    const navigate = useNavigate()
 
     const storeData = async (e) => {
         e.preventDefault()
@@ -33,6 +35,7 @@ function Create() {
         }
         else {
             const result = await response.json()
+            navigate('/')
             console.log("Data: ", result)
         }
     }
