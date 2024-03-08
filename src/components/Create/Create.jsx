@@ -25,7 +25,7 @@ function Create() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: data
         })
         const result = await response.json()
         console.log("Data: ", result)
