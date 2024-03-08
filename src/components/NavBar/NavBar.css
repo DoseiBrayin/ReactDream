@@ -1,0 +1,16 @@
+.links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.links a{
+    text-decoration: none;
+    margin: 0 1.5rem;
+}
