@@ -27,8 +27,14 @@ function Create() {
             },
             body: JSON.stringify(data)
         })
-        const result = await response.json()
-        console.log("Data: ", result)
+        if(!response.ok) {
+            console.log("Error: ", response.statusText)
+            return
+        }
+        else {
+            const result = await response.json()
+            console.log("Data: ", result)
+        }
     }
 
     return (
