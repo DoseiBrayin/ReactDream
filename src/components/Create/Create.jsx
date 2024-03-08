@@ -10,7 +10,7 @@ function Create() {
     const storeData = async (e) => {
         e.preventDefault()
         const data = {
-            id: Math.random().toString(36).substring(7),
+            Id: Math.random().toString(36).substring(7),
             order: order,
             title: title,
             url: url,
