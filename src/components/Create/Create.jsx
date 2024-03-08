@@ -1,6 +1,8 @@
 import './Create.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import swal from 'sweetalert'
+
 
 function Create() {
     const [title, setTitle] = useState('')
@@ -30,11 +32,23 @@ function Create() {
             body: JSON.stringify(data)
         })
         if(!response.ok) {
+            swal({
+                title: "Error!",
+                text: "Error to create a new To-Do",
+                icon: "error",
+                button: "Ok"
+            })
             console.log("Error: ", response.statusText)
-            return
+            navigate('/')
         }
         else {
             const result = await response.json()
+            swal({
+                title: "Success!",
+                text: "To-Do created successfully with id"+result.id+"!",
+                icon: "success",
+                button: "Ok"
+            })
             navigate('/')
             console.log("Data: ", result)
         }
