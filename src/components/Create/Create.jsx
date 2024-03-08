@@ -42,10 +42,10 @@ function Create() {
             navigate('/')
         }
         else {
-            const result = await response.json()
+            const result = await response.text()
             swal({
                 title: "Success!",
-                text: "To-Do created successfully with id"+result.id+"!",
+                text: "To-Do created successfully with id",
                 icon: "success",
                 button: "Ok"
             })
