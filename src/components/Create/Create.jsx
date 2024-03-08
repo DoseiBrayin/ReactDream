@@ -20,12 +20,12 @@ function Create() {
     }
 
     const fetchData = async (data) => {
-        const response = await fetch('{https://crudpython.azurewebsites.net/api/Upsert?', {
+        const response = await fetch('https://crudpython.azurewebsites.net/api/Upsert?', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: data
+            body: JSON.stringify(data)
         })
         const result = await response.json()
         console.log("Data: ", result)
