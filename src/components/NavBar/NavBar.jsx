@@ -9,7 +9,7 @@ function NavBar() {
       <h1>CRUD</h1>
       <div className='links'>
         <Link to='/'><a>home</a></Link>
-        <Link to='/create'>New Blog</Link>
+        <Link to='/create'>New To-Do</Link>
       </div>
     </nav>
     <Routes>
