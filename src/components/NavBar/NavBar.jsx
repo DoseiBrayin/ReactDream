@@ -1,5 +1,6 @@
 import './NavBar.css'
-import {BrowserRouter, Link} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import ShowToDO from '../ShowToDo/ShowToDo.jsx'
 
 function NavBar() {
   return (
@@ -11,6 +12,9 @@ function NavBar() {
         <Link to='/create'>New Blog</Link>
       </div>
     </nav>
+    <Routes>
+      <Route path='/' element={<ShowToDO />} />
+    </Routes>
     </BrowserRouter>
   )
 }

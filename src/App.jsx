@@ -1,7 +1,5 @@
 // import { useState, useEffect } from 'react'
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import ShowToDO from './components/ShowToDo/ShowToDo.jsx'
 import NavBar from './components/NavBar/NavBar.jsx'
 
 function App() {
@@ -21,11 +19,6 @@ function App() {
   return (
     <div className='container'>
       <NavBar />
-      <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<ShowToDO />} />
-          </Routes>
-        </BrowserRouter>
     </div>
   )
 }
