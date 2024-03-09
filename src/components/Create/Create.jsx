@@ -35,7 +35,7 @@ function Create() {
             body: JSON.stringify(data)
         })
         if(!response.ok) {
-            MySwal({
+            MySwal.fire({
                 title: "Error!",
                 text: "Error to create a new To-Do",
                 icon: "error",
@@ -46,7 +46,7 @@ function Create() {
         }
         else {
             const result = await response.text()
-            MySwal({
+            MySwal.fire({
                 title: "Success!",
                 text: "To-Do created successfully with id",
                 icon: "success",

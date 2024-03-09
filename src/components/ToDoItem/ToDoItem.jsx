@@ -1,5 +1,9 @@
-import './ToDoItem.css'; // Asegúrate de tener un archivo CSS con este nombre si quieres agregar estilos
+import './ToDoItem.css'; 
 import PropTypes from 'prop-types';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal);
 
 function ToDoItem({ title, url, id, order, completed }) {
     return (
@@ -11,7 +15,15 @@ function ToDoItem({ title, url, id, order, completed }) {
             <span>{completed ? 'Completed' : 'Not completed'}</span>
             <div className="Buttoms">
                 <button className='Edit'>Edit</button>
-                <button className='Delete'>Delete</button>
+                <button className='Delete' onClick={()=>{
+                    MySwal.fire({
+                        title: 'Are you sure?',
+                        text: 'You will not be able to recover this ToDo!',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yes, delete it!',
+                    })
+                }}>Delete</button>
             </div>
         </article>
     );
