@@ -1,7 +1,10 @@
 import './Create.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import swal from 'sweetalert'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 
 function Create() {
@@ -32,7 +35,7 @@ function Create() {
             body: JSON.stringify(data)
         })
         if(!response.ok) {
-            swal({
+            MySwal({
                 title: "Error!",
                 text: "Error to create a new To-Do",
                 icon: "error",
@@ -43,7 +46,7 @@ function Create() {
         }
         else {
             const result = await response.text()
-            swal({
+            MySwal({
                 title: "Success!",
                 text: "To-Do created successfully with id",
                 icon: "success",
