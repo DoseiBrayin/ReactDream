@@ -49,7 +49,7 @@ function Create() {
             const result = await response.text()
             MySwal.fire({
                 title: "Success!",
-                text: "To-Do created successfully with id",
+                text: "To-Do created successfully",
                 icon: "success",
                 button: "Ok",
                 timer: 5000
