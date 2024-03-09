@@ -39,7 +39,8 @@ function Create() {
                 title: "Error!",
                 text: "Error to create a new To-Do",
                 icon: "error",
-                button: "Ok"
+                button: "Ok",
+                timer: 5000
             })
             console.log("Error: ", response.statusText)
             navigate('/')
@@ -50,7 +51,8 @@ function Create() {
                 title: "Success!",
                 text: "To-Do created successfully with id",
                 icon: "success",
-                button: "Ok"
+                button: "Ok",
+                timer: 5000
             })
             navigate('/')
             console.log("Data: ", result)
