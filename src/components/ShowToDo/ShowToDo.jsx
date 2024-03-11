@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import ToDoItem from './ToDoItem';
-import EmptyData from './EmptyData';
+import ToDoItem from '../ToDoItem/ToDoItem.jsx';
+import EmptyData from '../EmptyData/EmptyData.jsx';
 
 const ShowToDo = () => {
     const [data, setData] = useState([]);
