@@ -22,7 +22,9 @@ function ShowToDo() {
             <h1>Show To-Do</h1>
             <section className="ToDoItems">
                 {data.length === 0 ? (
-                    <EmptyData />
+                    <div className='Empty'>
+                        <EmptyData className='Empty'/>
+                    </div>
                 ) : (
                     data.map((item) => (
                         <ToDoItem 
