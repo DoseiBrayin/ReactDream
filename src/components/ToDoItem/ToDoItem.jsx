@@ -7,10 +7,9 @@ const MySwal = withReactContent(Swal);
 
 function ToDoItem({ title, url, id, order, completed }) {
     return (
-        <article className='ToDoItem'>
+        <article className='ToDoItem' data-id={id}>
             <h2>{title}</h2>
             <a href={url}>{url}</a>
-            <span>{id}</span>
             <span>{order}</span>
             <span>{completed ? 'Completed' : 'Not completed'}</span>
             <div className="Buttoms">
