@@ -5,7 +5,7 @@ import withReactContent from 'sweetalert2-react-content';
 
 const MySwal = withReactContent(Swal);
 
-function ToDoItem({ title, url, id, order, completed }) {
+function ToDoItem({ title, url, id, order, completed, refreshParent}) {
     return (
         <article className='ToDoItem' data-id={id}>
             <h2>{title}</h2>
@@ -27,7 +27,7 @@ function ToDoItem({ title, url, id, order, completed }) {
                                 method: 'GET',
                             }).then(() => {
                                 MySwal.fire('Deleted!', 'Your ToDo has been deleted.', 'success');
-                                window.location.reload();
+                                refreshParent();
                             });
                         }
                     });
@@ -43,6 +43,7 @@ ToDoItem.propTypes = {
     id: PropTypes.number.isRequired,
     order: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
+    refreshParent: PropTypes.func.isRequired,
 };
 
 export default ToDoItem;
