@@ -2,10 +2,12 @@ import './ToDoItem.css';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useNavigate } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal);
 
 function ToDoItem({ title, url, id, order, completed }) {
+    const navigate = useNavigate();
     return (
         <article className='ToDoItem' data-id={id}>
             <h2>{title}</h2>
@@ -27,6 +29,7 @@ function ToDoItem({ title, url, id, order, completed }) {
                                 method: 'GET',
                             }).then(() => {
                                 MySwal.fire('Deleted!', 'Your ToDo has been deleted.', 'success');
+                                navigate('/');
                             });
                         }
                     });
