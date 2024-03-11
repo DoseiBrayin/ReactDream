@@ -14,6 +14,7 @@ function ShowToDo() {
     }
 
     useEffect(() => {
+        fetchData().then(setData);
         if (data.length === 0){
             setData([])
         }else{
