@@ -1,5 +1,6 @@
 import './ShowToDo.css'
 import ToDoItem from '../ToDoItem/ToDoItem'
+import EmptyData from '../EmptyData/EmptyData'
 import {useState, useEffect} from 'react'
 
 function ShowToDo() {
@@ -20,15 +21,21 @@ function ShowToDo() {
         <div className='show-to-do'>
             <h1>Show To-Do</h1>
             <section className="ToDoItems">
-                {data.map((item) => (
-                    <ToDoItem refreshParent={() => setRefresh(!refresh)}
-                    key={item.Id} 
-                    title={item.title} 
-                    url={item.url} 
-                    id={item.Id} 
-                    order={item.order} 
-                    completed={item.completed}/>
-                ))}
+                {data.length === 0 ? (
+                    <EmptyData />
+                ) : (
+                    data.map((item) => (
+                        <ToDoItem 
+                            refreshParent={() => setRefresh(!refresh)}
+                            key={item.Id} 
+                            title={item.title} 
+                            url={item.url} 
+                            id={item.Id} 
+                            order={item.order} 
+                            completed={item.completed}
+                        />
+                    ))
+                )}
             </section>
         </div>
     )
