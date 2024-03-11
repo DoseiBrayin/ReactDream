@@ -1,26 +1,32 @@
-import './ShowToDo.css'
-import ToDoItem from '../ToDoItem/ToDoItem'
-import EmptyData from '../EmptyData/EmptyData'
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import ToDoItem from './ToDoItem';
+import EmptyData from './EmptyData';
 
-function ShowToDo() {
-    const [data, setData] = useState([])
-    const [refresh, setRefresh] = useState(0)
+const ShowToDo = () => {
+    const [data, setData] = useState([]);
+    const [refresh, setRefresh] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchData = async () => {
-        const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
-        const data = await response.json()
-        return data
-    }
+        const response = await fetch('https://crudpython.azurewebsites.net/api/Read?');
+        const data = await response.json();
+        return data;
+    };
 
     useEffect(() => {
-        fetchData().then(setData);
+        setIsLoading(true);
+        fetchData().then((data) => {
+            setData(data);
+            setIsLoading(false);
+        });
     }, [refresh]);
 
     return (
         <div className='show-to-do'>
             <h1>Show To-Do</h1>
-            {data.length === 0 ? (
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : data.length === 0 ? (
                 <div className='Empty'>
                     <EmptyData className='Empty' />
                 </div>
@@ -35,12 +41,11 @@ function ShowToDo() {
                         id={item.Id}
                         order={item.order}
                         completed={item.completed} />
-                        ))
-                    }
-                    </section>
+                    ))
+                }</section>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default ShowToDo
+export default ShowToDo;
