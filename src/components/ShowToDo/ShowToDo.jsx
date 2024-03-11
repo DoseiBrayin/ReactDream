@@ -1,32 +1,26 @@
-import { useState, useEffect } from 'react';
-import ToDoItem from '../ToDoItem/ToDoItem.jsx';
-import EmptyData from '../EmptyData/EmptyData.jsx';
+import './ShowToDo.css'
+import ToDoItem from '../ToDoItem/ToDoItem'
+import EmptyData from '../EmptyData/EmptyData'
+import { useState, useEffect } from 'react'
 
-const ShowToDo = () => {
-    const [data, setData] = useState([]);
-    const [refresh, setRefresh] = useState(0);
-    const [isLoading, setIsLoading] = useState(true);
+function ShowToDo() {
+    const [data, setData] = useState([])
+    const [refresh, setRefresh] = useState(0)
 
     const fetchData = async () => {
-        const response = await fetch('https://crudpython.azurewebsites.net/api/Read?');
-        const data = await response.json();
-        return data;
-    };
+        const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
+        const data = await response.json()
+        return data
+    }
 
     useEffect(() => {
-        setIsLoading(true);
-        fetchData().then((data) => {
-            setData(data);
-            setIsLoading(false);
-        });
+        fetchData().then(setData);
     }, [refresh]);
 
     return (
         <div className='show-to-do'>
             <h1>Show To-Do</h1>
-            {isLoading ? (
-                <p>Loading...</p>
-            ) : data.length === 0 ? (
+            {data.length === 0 ? (
                 <div className='Empty'>
                     <EmptyData className='Empty' />
                 </div>
@@ -41,11 +35,12 @@ const ShowToDo = () => {
                         id={item.Id}
                         order={item.order}
                         completed={item.completed} />
-                    ))
-                }</section>
+                        ))
+                    }
+                    </section>
             )}
         </div>
-    );
-};
+    )
+}
 
-export default ShowToDo;
+export default ShowToDo
