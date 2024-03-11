@@ -14,6 +14,7 @@ function ShowToDo() {
     }
 
     useEffect(() => {
+        setData([])
         fetchData().then(setData);
     }, [refresh]);
 
