@@ -1,4 +1,4 @@
-import './ToDoItem.css'; 
+import './ToDoItem.css';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -14,14 +14,22 @@ function ToDoItem({ title, url, id, order, completed }) {
             <span>{completed ? 'Completed' : 'Not completed'}</span>
             <div className="Buttoms">
                 <button className='Edit'>Edit</button>
-                <button className='Delete' onClick={()=>{
+                <button className='Delete' onClick={() => {
                     MySwal.fire({
                         title: 'Are you sure?',
                         text: 'You will not be able to recover this ToDo!',
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonText: 'Yes, delete it!',
-                    })
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            fetch(`https://crudpython.azurewebsites.net/api/delete?id=${id}`, {
+                                method: 'GET',
+                            }).then(() => {
+                                MySwal.fire('Deleted!', 'Your ToDo has been deleted.', 'success');
+                            });
+                        }
+                    });
                 }}>Delete</button>
             </div>
         </article>
