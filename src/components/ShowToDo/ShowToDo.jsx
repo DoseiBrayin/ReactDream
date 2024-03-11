@@ -1,44 +1,44 @@
 import './ShowToDo.css'
 import ToDoItem from '../ToDoItem/ToDoItem'
 import EmptyData from '../EmptyData/EmptyData'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 function ShowToDo() {
-    const [data,setData] = useState([])
-    const [refresh,setRefresh] = useState([false])
+    const [data, setData] = useState([])
+    const [refresh, setRefresh] = useState([false])
 
     const fetchData = async () => {
         const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
         const data = await response.json()
         return data
-      }
-    
-      useEffect(() => {
+    }
+
+    useEffect(() => {
         fetchData().then(setData);
-      }, [refresh]);
+    }, [refresh]);
 
     return (
         <div className='show-to-do'>
             <h1>Show To-Do</h1>
-            <section className="ToDoItems">
-                {data.length === 0 ? (
-                    <div className='Empty'>
-                        <EmptyData className='Empty'/>
-                    </div>
-                ) : (
+            {data.length === 0 ? (
+                <div className='Empty'>
+                    <EmptyData className='Empty' />
+                </div>
+            ) : (
+                <section className="ToDoItems">{
                     data.map((item) => (
-                        <ToDoItem 
-                            refreshParent={() => setRefresh(!refresh)}
-                            key={item.Id} 
-                            title={item.title} 
-                            url={item.url} 
-                            id={item.Id} 
-                            order={item.order} 
-                            completed={item.completed}
-                        />
-                    ))
-                )}
-            </section>
+                        <ToDoItem
+                        refreshParent={() => setRefresh(!refresh)}
+                        key={item.Id}
+                        title={item.title}
+                        url={item.url}
+                        id={item.Id}
+                        order={item.order}
+                        completed={item.completed} />
+                        ))
+                    }
+                    </section>
+            )}
         </div>
     )
 }
