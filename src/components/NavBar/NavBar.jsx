@@ -2,6 +2,7 @@ import './NavBar.css'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import ShowToDO from '../ShowToDo/ShowToDo.jsx'
 import Create from '../Create/Create.jsx'
+import Edit from '../Edit/Edit.jsx'
 
 function NavBar() {
   return (
@@ -16,6 +17,7 @@ function NavBar() {
     <Routes>
       <Route path='/' element={<ShowToDO />} />
       <Route path='/create' element={<Create />} />
+      <Route path='/edit:id' element={<Edit />} />
     </Routes>
     </BrowserRouter>
   )

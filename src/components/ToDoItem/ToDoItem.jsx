@@ -2,6 +2,7 @@ import './ToDoItem.css';
 import PropTypes from 'prop-types';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { Link } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal);
 
@@ -13,7 +14,7 @@ function ToDoItem({ title, url, id, order, completed, refreshParent}) {
             <span>{order}</span>
             <span>{completed ? 'Completed' : 'Not completed'}</span>
             <div className="Buttoms">
-                <button className='Edit'>Edit</button>
+                <Link to={`/edit/${id}`} className='Edit'></Link>
                 <button className='Delete' onClick={() => {
                     MySwal.fire({
                         title: 'Are you sure?',
