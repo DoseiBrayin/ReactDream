@@ -1,6 +1,6 @@
 import './Edit.css'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 
 const FindData = async (id) => {
     const response = await fetch(`https://crudpython.azurewebsites.net/api/readId?id=${id}`)
