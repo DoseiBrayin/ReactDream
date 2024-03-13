@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 
 function ShowToDo() {
     const [data, setData] = useState([])
-    const [refresh, setRefresh] = useState(0)
+    const [refresh, setRefresh] = useState(false)
 
     const fetchData = async () => {
         const response = await fetch('https://crudpython.azurewebsites.net/api/Read?')
@@ -28,7 +28,7 @@ function ShowToDo() {
                 <section className="ToDoItems">{
                     data.map((item) => (
                         <ToDoItem
-                        refreshParent={() => setRefresh(refresh+1)}
+                        refreshParent={() => setRefresh(!refresh)}
                         key={item.Id}
                         title={item.title}
                         url={item.url}
