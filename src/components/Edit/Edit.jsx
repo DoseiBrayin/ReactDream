@@ -12,11 +12,13 @@ function Edit() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState(null);
-
+    console.log(id);
     useEffect(() => {
-        FindData(id).then(setData);
+        FindData(id).then((data) => {
+            setData(data);
+            console.log(data);
+        });
     }, [id, navigate]);
-    console.log(data)
     return (
         <div className='Edit'>
             <h2>Edit</h2>
