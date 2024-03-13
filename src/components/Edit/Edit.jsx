@@ -11,6 +11,7 @@ function Edit() {
     const { id } = useParams();
     FindData(id).then((data) => {
         const jsonResponse = data.split(", ")[1]
+        console.log(jsonResponse);
         const parsedData = JSON.parse(jsonResponse)
         console.log(parsedData);
     });
