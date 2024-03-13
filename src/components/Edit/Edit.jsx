@@ -1,10 +1,11 @@
 import './Edit.css'
 import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
-const FindData = (id) => {
-    return fetch(`https://crudpython.azurewebsites.net/api/readId?id=${id}`, {
-        method: 'GET',
-    }).then((response) => response.json());
+const FindData = async (id) => {
+    const response = await fetch(`https://crudpython.azurewebsites.net/api/readId?id=${id}`)
+    const data = await response.json()
+    return data
 }
 
 function Edit() {
@@ -13,16 +14,7 @@ function Edit() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        FindData(id).then((data) => {
-            console.log(data);
-            if (data) {
-                alert('Data found');
-                setData(data);
-            } else {
-                alert('Data not found');
-                navigate('/');
-            }
-        });
+        FindData(id).then(setData);
     }, [id, navigate]);
 
     return (
