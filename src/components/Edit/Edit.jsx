@@ -1,7 +1,5 @@
 import './Edit.css'
-import { useParams, useNavigate } from 'react-router-dom'
-
-
+import { useParams } from 'react-router-dom'
 
 const FindData = (id) => {
     return fetch(`https://crudpython.azurewebsites.net/api/readId?id=${id}`, {
@@ -11,16 +9,10 @@ const FindData = (id) => {
 
 function Edit() {
     const { id } = useParams();
-    const navigate = useNavigate();
     FindData(id).then((data) => {
-        console.log(data);
-        if (data) {
-            alert('Data found');
-            navigate(`/edit/${id}`);
-        } else {
-            alert('Data not found');
-            navigate('/');
-        }
+        const jsonResponse = data.split(", ")[1]
+        const parsedData = JSON.parse(jsonResponse)
+        console.log(parsedData);
     });
     return (
         <div className='Edit'>
