@@ -12,23 +12,48 @@ function Edit() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState(null);
-    console.log(id);
+
     useEffect(() => {
-        FindData(id).then((data) => {
-            setData(data);
-            console.log(data);
-        });
+        FindData(id).then(setData);
     }, [id, navigate]);
     return (
         <div className='Edit'>
             <h2>Edit</h2>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Deleniti necessitatibus praesentium odit earum sit,
-                ducimus quod sapiente magni eum. Et rerum ipsam autem
-                error quisquam ab sequi impedit. Praesentium, error.
-
-            </p>
+            {data.map((item) => (
+                <form key={item.Id} onSubmit={(event) => {
+                    event.preventDefault();
+                    const form = event.target;
+                    const title = form.title.value;
+                    const url = form.url.value;
+                    const order = form.order.value;
+                    const completed = form.completed.checked;
+                    fetch('https://crudpython.azurewebsites.net/api/Upsert?', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            id: item.Id,
+                            title,
+                            url,
+                            order,
+                            completed,
+                        }),
+                    }).then((response) => {
+                        response.ok ? navigate('/') : alert('Error');
+                    });
+                }}>
+                    <label htmlFor="title">Title</label>
+                    <input type="text" id="title" name="title" defaultValue={item.title} required />
+                    <label htmlFor="url">URL</label>
+                    <input type="text" id="url" name="url" defaultValue={item.url} required />
+                    <label htmlFor="order">Order</label>
+                    <input type="number" id="order" name="order" defaultValue={item.order} required />
+                    <label htmlFor="completed">Completed</label>
+                    <input type="checkbox" id="completed" name="completed" defaultChecked={item.completed} />
+                    <button type="submit">Save</button>
+                </form>
+            ))}
         </div>
     )
 }
