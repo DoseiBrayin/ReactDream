@@ -26,9 +26,14 @@ function ToDoItem({ title, url, id, order, completed, refreshParent}) {
                         if (result.isConfirmed) {
                             fetch(`https://crudpython.azurewebsites.net/api/delete?id=${id}`, {
                                 method: 'GET',
-                            }).then(() => {
-                                MySwal.fire('Deleted!', 'Your ToDo has been deleted.', 'success');
-                                refreshParent();
+                            }).then((response) => {
+                                response.ok ? 
+                                    (() => {
+                                        MySwal.fire('Deleted!', 'Your ToDo has been deleted.', 'success');
+                                        refreshParent();
+                                    })()
+                                : 
+                                    MySwal.fire('Error!', 'Your ToDo has not been deleted.', 'error');
                             });
                         }
                     });
