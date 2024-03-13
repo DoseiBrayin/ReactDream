@@ -20,7 +20,7 @@ function ShowToDo() {
     return (
         <div className='show-to-do'>
             <h1>Show To-Do</h1>
-            {data.length === 0 ? (
+            {data.length == 0 ? (
                 <div className='Empty'>
                     <EmptyData className='Empty' />
                 </div>
