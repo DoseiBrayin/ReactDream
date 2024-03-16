@@ -42,11 +42,9 @@ function Create() {
                 button: "Ok",
                 timer: 5000
             })
-            console.log("Error: ", response.statusText)
             navigate('/')
         }
         else {
-            const result = await response.text()
             MySwal.fire({
                 title: "Success!",
                 text: "To-Do created successfully",
@@ -55,7 +53,6 @@ function Create() {
                 timer: 5000
             })
             navigate('/')
-            console.log("Data: ", result)
         }
     }
 
