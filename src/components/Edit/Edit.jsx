@@ -40,7 +40,7 @@ function Edit() {
                             completed,
                         }),
                     }).then((response) => {
-                        response.ok ? navigate('/') : alert('Error');
+                        response.ok ? navigate('/') : console.log('Error');
                     });
                 }}>
                     <label htmlFor="title">Title</label>
