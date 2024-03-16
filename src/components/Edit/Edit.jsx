@@ -16,49 +16,44 @@ function Edit() {
     useEffect(() => {
         FindData(id).then(setData);
     }, [id, navigate]);
-
-    const SubmitData = async (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const title = form.title.value;
-        const url = form.url.value;
-        const order = form.order.value;
-        const completed = form.completed.checked;
-        const response = await fetch('https://crudpython.azurewebsites.net/api/Upsert?', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id: data[0].Id,
-                title,
-                url,
-                order,
-                completed,
-            }),
-        });
-        if(response.ok) {
-            navigate('/')
-        }
-        else {
-            console.log('Error');
-        }
-    }
-
     return (
         <div className='Edit'>
             <h2>Edit</h2>
-                <form onSubmit={SubmitData}>
+            {data.map((item) => (
+                <form key={item.Id} onSubmit={(event) => {
+                    event.preventDefault();
+                    const form = event.target;
+                    const title = form.title.value;
+                    const url = form.url.value;
+                    const order = form.order.value;
+                    const completed = form.completed.checked;
+                    fetch('https://crudpython.azurewebsites.net/api/Upsert?', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            id: item.Id,
+                            title,
+                            url,
+                            order,
+                            completed,
+                        }),
+                    }).then((response) => {
+                        response.ok ? navigate('/') : console.log('Error');
+                    });
+                }}>
                     <label htmlFor="title">Title</label>
-                    <input type="text" id="title" name="title" required />
+                    <input type="text" id="title" name="title" defaultValue={item.title} required />
                     <label htmlFor="url">URL</label>
-                    <input type="text" id="url" name="url"  required />
+                    <input type="text" id="url" name="url" defaultValue={item.url} required />
                     <label htmlFor="order">Order</label>
-                    <input type="number" id="order" name="order" required />
+                    <input type="number" id="order" name="order" defaultValue={item.order} required />
                     <label htmlFor="completed">Completed</label>
-                    <input type="checkbox" id="completed" name="completed"/>
+                    <input type="checkbox" id="completed" name="completed" defaultChecked={item.completed} />
                     <button type="submit">Save</button>
                 </form>
+            ))}
         </div>
     )
 }
