@@ -20,27 +20,25 @@ function Edit() {
         <div className='Edit_Name'>
             <h2>Edit</h2>
             <p>{id}</p>
-            <form className='create-form'>
-                <div className="input-group flex-wrap">
-                    <span className="input-group-text" id="addon-wrapping">Title</span>
-                    <input type="text" className="form-control" placeholder="Do a Homework" aria-label="Username" aria-describedby="addon-wrapping"  required/>
-                </div>
-                <div className="input-group flex-wrap">
-                    <span className="input-group-text" id="addon-wrapping">Url</span>
-                    <input type="text" className="form-control" placeholder="https://www.google.com" aria-label="Username" aria-describedby="addon-wrapping" required/>
-                </div>
-                <div className="input-group flex-wrap">
-                    <span className="input-group-text" id="addon-wrapping">Order</span>
-                    <input type="number" className="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping" required/>
-                </div>
-                <div className="form-check form-switch">
-                    <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
-                    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Completed?</label>
-                </div>
-                <button type="submit" className="btn btn-primary">Create</button>
-            </form>
+            {data && (
+                <form className='create-form'>
+                    <div className="input-group flex-wrap">
+                        <span className="input-group-text" id="addon-wrapping">Title</span>
+                        <input type="text" className="form-control" placeholder="Do a Homework" aria-label="Username" aria-describedby="addon-wrapping" value={data[0].title} required/>
+                    </div>
+                    <div className="input-group flex-wrap">
+                        <span className="input-group-text" id="addon-wrapping">Url</span>
+                        <input type="text" className="form-control" placeholder="https://www.google.com" aria-label="Username" aria-describedby="addon-wrapping" value={data[0].url} required/>
+                    </div>
+                    <div className="input-group flex-wrap">
+                        <span className="input-group-text" id="addon-wrapping">Order</span>
+                        <input type="number" className="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping" value={data[0].order} required/>
+                    </div>
+                    {/* ... */}
+                </form>
+            )}
         </div>
-    )
+    );
 }
 
 export default Edit
