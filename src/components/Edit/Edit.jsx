@@ -15,11 +15,11 @@ function Edit() {
     useEffect(() => {
         FindData(id).then(setData);
     }, [id, navigate]);
+    console.log(data)
     return (
         <div className='Edit_Name'>
             <h2>Edit</h2>
             <p>{id}</p>
-            <p>{data}</p>
         </div>
     )
 }
