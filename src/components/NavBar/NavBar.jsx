@@ -17,7 +17,7 @@ function NavBar() {
     <Routes>
       <Route path='/' element={<ShowToDO />} />
       <Route path='/create' element={<Create />} />
-      <Route path='/edit' element={<Edit />} />
+      <Route path='/edit/:id' element={<Edit />} />
     </Routes>
     </BrowserRouter>
   )
