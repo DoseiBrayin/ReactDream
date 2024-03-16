@@ -7,7 +7,6 @@ const FindData = async (id) => {
     const data = await response.json()
     return data
 }
-
 function Edit() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -20,6 +19,7 @@ function Edit() {
         <div className='Edit_Name'>
             <h2>Edit</h2>
             <p>{id}</p>
+            <p>{data}</p>
         </div>
     )
 }
