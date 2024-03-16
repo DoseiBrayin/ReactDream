@@ -14,7 +14,7 @@ function ToDoItem({ title, url, id, order, completed, refreshParent}) {
             <span>{order}</span>
             <span>{completed ? 'Completed' : 'Not completed'}</span>
             <div className="Buttoms">
-                <Link to={`/create`} className='Edit'>Edit</Link>
+                <Link to={`/edit`} className='Edit'>Edit</Link>
                 <button className='Delete' onClick={() => {
                     MySwal.fire({
                         title: 'Are you sure?',
