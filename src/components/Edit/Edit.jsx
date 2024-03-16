@@ -19,6 +19,7 @@ function Edit() {
     return (
         <div className='Edit_Name'>
             <h2>Edit</h2>
+            <p>{id}</p>
         </div>
     )
 }
