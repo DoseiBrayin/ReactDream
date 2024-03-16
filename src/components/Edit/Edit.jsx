@@ -21,7 +21,7 @@ function Edit() {
             <p>{id}</p>
             <form className='create-form'>
                 <div className="input-group flex-wrap">
-                    <span className="input-group-text" id="addon-wrapping" defaultValue={data[0].title}>Title</span>
+                    <span className="input-group-text" id="addon-wrapping">Title</span>
                     <input type="text" className="form-control" placeholder="Do a Homework" aria-label="Username" aria-describedby="addon-wrapping"  required/>
                 </div>
                 <div className="input-group flex-wrap">
