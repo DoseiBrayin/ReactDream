@@ -34,7 +34,10 @@ function Edit() {
                         <span className="input-group-text" id="addon-wrapping">Order</span>
                         <input type="number" className="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping" value={data[0].order} required/>
                     </div>
-                    {/* ... */}
+                    <div className="input-group flex-wrap">
+                        <span className="input-group-text" id="addon-wrapping">Completed</span>
+                        <input type="checkbox" className="form-check-input" aria-label="Username" aria-describedby="addon-wrapping" value={data[0].completed} required/>
+                    </div>
                 </form>
             )}
         </div>
