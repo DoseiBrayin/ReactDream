@@ -19,7 +19,7 @@ function Edit() {
     return (
         <div className='Edit'>
             <h2>Edit</h2>
-            {data.map((item) => (
+            {data && data.map((item) => (
                 <form key={item.Id} onSubmit={(event) => {
                     event.preventDefault();
                     const form = event.target;
