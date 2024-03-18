@@ -24,7 +24,7 @@ function Edit() {
 
     useEffect(() => {
         FindData(id).then(setData);
-    }, [id, navigate]);
+    }, []);
     console.log(data)
 
 
