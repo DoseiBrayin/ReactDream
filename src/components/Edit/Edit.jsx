@@ -1,6 +1,6 @@
 import './Edit.css'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -16,12 +16,23 @@ function Edit() {
     const { id } = useParams();
     const navigate = useNavigate()
 
-    const [data, setData] = useState(FindData(id));
-    const [title, setTitle] = useState(data[0].title)
-    const [url, setUrl] = useState(data[0].url)
-    const [order, setOrder] = useState(data[0].order)
-    const [completed, setCompleted] = useState(data[0].completed)
+    const [data, setData] = useState(null);
+    const [title, setTitle] = useState('')
+    const [url, setUrl] = useState('')
+    const [order, setOrder] = useState('')
+    const [completed, setCompleted] = useState(false)
+    const Find = useCallback(async () => {
+        const result = await FindData(id);
+        setData(result[0]);
+        setTitle(result[0].title);
+        setUrl(result[0].url);
+        setOrder(result[0].order);
+        setCompleted(result[0].completed);
+    }, [id]); // Recrea la función solo si 'id' cambia
 
+    useEffect(() => {
+        Find();
+    }, [Find]); // Llama a 'fetchData' solo si la función cambia
     console.log(data)
 
 
