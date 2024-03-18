@@ -1,6 +1,6 @@
 import './Edit.css'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -16,21 +16,12 @@ function Edit() {
     const { id } = useParams();
     const navigate = useNavigate()
 
-    const [data, setData] = useState(null);
-    const [title, setTitle] = useState('')
-    const [url, setUrl] = useState('')
-    const [order, setOrder] = useState('')
-    const [completed, setCompleted] = useState(false)
+    const [data, setData] = useState(FindData(id));
+    const [title, setTitle] = useState(data[0].title)
+    const [url, setUrl] = useState(data[0].url)
+    const [order, setOrder] = useState(data[0].order)
+    const [completed, setCompleted] = useState(data[0].completed)
 
-    useEffect(() => {
-        FindData(id).then(data => {
-            setData(data);
-            setTitle(data[0].title);
-            setUrl(data[0].url);
-            setOrder(data[0].order);
-            setCompleted(data[0].completed);
-        });
-    }, []);
     console.log(data)
 
 
