@@ -93,6 +93,7 @@ const fetchData = async (data_edit) => {
                         <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" value={data[0].completed} onChange={(e) => setCompleted(e.target.value)} />
                         <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Completed?</label>
                     </div>
+                    <button type="submit" className="btn btn-primary">Edit</button>
                 </form>
             )}
         </div>
