@@ -32,9 +32,7 @@ function Edit() {
 
     useEffect(() => {
         Find();
-    }, [Find]); // Llama a 'fetchData' solo si la función cambia
-    console.log(data)
-
+    }, [Find]); 
 
 const storeData = async (e) => {
     e.preventDefault()
@@ -82,7 +80,6 @@ const fetchData = async (data_edit) => {
     return (
         <div className='Edit_Name'>
             <h2>Edit</h2>
-            <p>{id}</p>
             {data && (
                 <form className='create-form' onSubmit={storeData}>
                     <div className="input-group flex-wrap">
