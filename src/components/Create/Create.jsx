@@ -73,7 +73,7 @@ function Create() {
                     <input type="number" className="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping" value={order} onChange={(e) => setOrder(e.target.value)} required/>
                 </div>
                 <div className="form-check form-switch">
-                    <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" value={completed} onChange={(e) => setCompleted(e.target.checked)}/>
+                    <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked={completed} onChange={(e) => setCompleted(e.target.checked)}/>
                     <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Completed?</label>
                 </div>
                 <button type="submit" className="btn btn-primary">Create</button>
