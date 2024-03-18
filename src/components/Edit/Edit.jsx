@@ -30,7 +30,7 @@ function Edit() {
             setOrder(data[0].order);
             setCompleted(data[0].completed);
         });
-    }, [id]);
+    }, []);
     console.log(data)
 
 
