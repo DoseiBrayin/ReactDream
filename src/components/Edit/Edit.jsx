@@ -23,8 +23,14 @@ function Edit() {
     const [completed, setCompleted] = useState(false)
 
     useEffect(() => {
-        FindData(id).then(setData);
-    }, []);
+        FindData(id).then(data => {
+            setData(data);
+            setTitle(data[0].title);
+            setUrl(data[0].url);
+            setOrder(data[0].order);
+            setCompleted(data[0].completed);
+        });
+    }, [id]);
     console.log(data)
 
 
