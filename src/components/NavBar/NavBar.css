@@ -8,6 +8,7 @@
     letter-spacing: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
+    gap: 3rem;
 }
 
 .linksH1{
@@ -21,7 +22,17 @@
     text-decoration: none;
 }
 
-.links a{
+.links{
     text-decoration: none;
     margin: 0 1.5rem;
 }
+
+ @media screen and (max-width: 768px) {
+    .links{
+        font-size: medium;
+    }
+    .linksH1{
+        font-size: 2rem;
+        margin-left: 5px;
+    }
+ }

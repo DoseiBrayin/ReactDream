@@ -7,7 +7,7 @@ function NavBar() {
     <nav className='navbar'>
       <Link to='/' className='linksH1' >CRUD</Link>
       <div className='links'>
-        <Link to='/'><a>home</a></Link>
+        <Link to='/'>home</Link>
         <Link to='/create'>New To-Do</Link>
       </div>
     </nav>
