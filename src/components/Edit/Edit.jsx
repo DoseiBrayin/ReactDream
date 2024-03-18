@@ -1,6 +1,6 @@
 import './Edit.css'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -31,7 +31,11 @@ function Edit() {
         setOrder(result[0].order);
         setCompleted(result[0].completed);
     };
-    dataRequired();
+
+    useEffect(() => {
+        dataRequired();
+    }, []); // Se ejecuta solo una vez cuando el componente se monta
+
     console.log(data)
 
 
