@@ -1,6 +1,6 @@
 import './Edit.css'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -22,20 +22,15 @@ function Edit() {
     const [order, setOrder] = useState('')
     const [completed, setCompleted] = useState(false)
 
-    const dataRequired = async () => {
-        const result = await FindData(id);
-        setData(result);
-        setData(result[0]);
-        setTitle(result[0].title);
-        setUrl(result[0].url);
-        setOrder(result[0].order);
-        setCompleted(result[0].completed);
-    };
-
     useEffect(() => {
-        dataRequired();
-    }, []); // Se ejecuta solo una vez cuando el componente se monta
-
+        FindData(id).then(data => {
+            setData(data);
+            setTitle(data[0].title);
+            setUrl(data[0].url);
+            setOrder(data[0].order);
+            setCompleted(data[0].completed);
+        });
+    }, []);
     console.log(data)
 
 
@@ -90,18 +85,18 @@ const fetchData = async (data_edit) => {
                 <form className='create-form' onSubmit={storeData}>
                     <div className="input-group flex-wrap">
                         <span className="input-group-text" id="addon-wrapping">Title</span>
-                        <input type="text" className="form-control" placeholder="Do a Homework" aria-label="Username" aria-describedby="addon-wrapping" value={title} onChange={(e) => setTitle(e.target.value)} required />
+                        <input type="text" className="form-control" placeholder="Do a Homework" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data[0].title} value={title} onChange={(e) => setTitle(e.target.value)} required />
                     </div>
                     <div className="input-group flex-wrap">
                         <span className="input-group-text" id="addon-wrapping">Url</span>
-                        <input type="text" className="form-control" placeholder="https://www.google.com" aria-label="Username" aria-describedby="addon-wrapping" value={url} onChange={(e) => setUrl(e.target.value)} required />
+                        <input type="text" className="form-control" placeholder="https://www.google.com" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data[0].url} value={url} onChange={(e) => setUrl(e.target.value)} required />
                     </div>
                     <div className="input-group flex-wrap">
                         <span className="input-group-text" id="addon-wrapping">Order</span>
-                        <input type="number" className="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping" value={order} onChange={(e) => setOrder(e.target.value)} required />
+                        <input type="number" className="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data[0].order} value={order} onChange={(e) => setOrder(e.target.value)} required />
                     </div>
                     <div className="form-check form-switch">
-                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" value={completed} onChange={(e) => setCompleted(e.target.checked)} />
+                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" defaultValue={data[0].completed} value={completed} onChange={(e) => setCompleted(e.target.checked)} />
                         <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Completed?</label>
                     </div>
                     <button type="submit" className="btn btn-primary">Edit</button>
