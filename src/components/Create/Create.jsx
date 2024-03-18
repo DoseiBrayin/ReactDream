@@ -39,7 +39,7 @@ function Create() {
                 title: "Error!",
                 text: "Error to create a new To-Do",
                 icon: "error",
-                button: "Ok",
+                confirmButtonText: "Ok",
                 timer: 5000
             })
             navigate('/')
@@ -49,7 +49,7 @@ function Create() {
                 title: "Success!",
                 text: "To-Do created successfully",
                 icon: "success",
-                button: "Ok",
+                confirmButtonText: "Ok",
                 timer: 5000
             })
             navigate('/')

@@ -59,7 +59,7 @@ const fetchData = async (data_edit) => {
             title: "Error!",
             text: "Error to edit To-Do",
             icon: "error",
-            button: "Ok",
+            confirmButtonText: "Ok",
             timer: 5000
         })
         navigate('/')
@@ -69,7 +69,7 @@ const fetchData = async (data_edit) => {
             title: "Success!",
             text: "To-Do edited successfully",
             icon: "success",
-            button: "Ok",
+            confirmButtonText: "Ok",
             timer: 5000
         })
         navigate('/')
