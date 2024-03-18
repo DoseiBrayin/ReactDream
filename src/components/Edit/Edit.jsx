@@ -39,7 +39,7 @@ function Edit() {
 const storeData = async (e) => {
     e.preventDefault()
     const data_edit = {
-        Id: data[0].Id,
+        Id: data.Id,
         order: order,
         title: title,
         url: url,
@@ -87,18 +87,18 @@ const fetchData = async (data_edit) => {
                 <form className='create-form' onSubmit={storeData}>
                     <div className="input-group flex-wrap">
                         <span className="input-group-text" id="addon-wrapping">Title</span>
-                        <input type="text" className="form-control" placeholder="Do a Homework" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data[0].title} value={title} onChange={(e) => setTitle(e.target.value)} required />
+                        <input type="text" className="form-control" placeholder="Do a Homework" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data.title} value={title} onChange={(e) => setTitle(e.target.value)} required />
                     </div>
                     <div className="input-group flex-wrap">
                         <span className="input-group-text" id="addon-wrapping">Url</span>
-                        <input type="text" className="form-control" placeholder="https://www.google.com" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data[0].url} value={url} onChange={(e) => setUrl(e.target.value)} required />
+                        <input type="text" className="form-control" placeholder="https://www.google.com" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data.url} value={url} onChange={(e) => setUrl(e.target.value)} required />
                     </div>
                     <div className="input-group flex-wrap">
                         <span className="input-group-text" id="addon-wrapping">Order</span>
-                        <input type="number" className="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data[0].order} value={order} onChange={(e) => setOrder(e.target.value)} required />
+                        <input type="number" className="form-control" placeholder="1" aria-label="Username" aria-describedby="addon-wrapping" defaultValue={data.order} value={order} onChange={(e) => setOrder(e.target.value)} required />
                     </div>
                     <div className="form-check form-switch">
-                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" defaultChecked={data[0].completed} checked={completed} onChange={(e) => setCompleted(e.target.checked)} />
+                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" defaultChecked={data.completed} checked={completed} onChange={(e) => setCompleted(e.target.checked)} />
                         <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Completed?</label>
                     </div>
                     <button type="submit" className="btn btn-primary">Edit</button>
