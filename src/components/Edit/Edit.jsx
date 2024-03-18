@@ -54,7 +54,6 @@ const fetchData = async (data_edit) => {
         },
         body: JSON.stringify(data_edit)
     })
-    console.log(response.json())
     if (!response.ok) {
         MySwal.fire({
             title: "Error!",
